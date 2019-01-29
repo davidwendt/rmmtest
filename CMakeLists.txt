@@ -194,12 +194,13 @@ link_directories("${CMAKE_CUDA_IMPLICIT_LINK_DIRECTORIES}" )
 #    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --define-macro HT_LEGACY_ALLOCATOR")
 #endif(HT_LEGACY_ALLOCATOR)
 
+add_executable(test1 test1.cu)
 
 ###################################################################################################
 # - link libraries --------------------------------------------------------------------------------
 
 #target_link_libraries(cudf rmm "${ARROW_LIB}" ${ZLIB_LIBRARIES} NVStrings)
-target_link_libraries(rmm)
+target_link_libraries(test1 rmm)
 
 ###################################################################################################
 # - python cffi bindings --------------------------------------------------------------------------
@@ -232,6 +233,5 @@ add_custom_target(python_cffi DEPENDS rmm_python_cffi PYTHON_CFFI)
 
 #add_custom_target(install_python DEPENDS cudf rmm_install_python PYTHON_CFFI INSTALL_PYTHON_CFFI)
 
-add_executable(test1 test1.cu)
 
 
