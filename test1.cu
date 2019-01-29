@@ -51,7 +51,6 @@ int main( int argc, char** argv )
    options.allocation_mode = PoolAllocation;
    options.initial_pool_size = 0;
    options.enable_logging = false;
-   options.allocation_mode = PoolAllocation;
    rmmInitialize(&options);
    test1();
    rmmFinalize();
