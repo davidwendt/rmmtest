@@ -40,9 +40,26 @@ int test1()
    return 0;
 }
 
+
 int main( int argc, char** argv )
 {
    base();
+
    test1();
+
+   rmmOptions_t options;
+   options.allocation_mode = PoolAllocation;
+   options.initial_pool_size = 0;
+   options.enable_logging = false;
+   options.allocation_mode = PoolAllocation;
+   rmmInitialize(&options);
+   test1();
+   rmmFinalize();
+
+   options.allocation_mode = CudaManagedMemory;
+   rmmInitialize(&options);
+   test1();
+   rmmFinalize();
+
    return 0;
 }

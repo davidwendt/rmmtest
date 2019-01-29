@@ -194,10 +194,11 @@ link_directories("${CMAKE_CUDA_IMPLICIT_LINK_DIRECTORIES}" )
 #    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --define-macro HT_LEGACY_ALLOCATOR")
 #endif(HT_LEGACY_ALLOCATOR)
 
-add_executable(test1 test1.cu)
 
 ###################################################################################################
 # - link libraries --------------------------------------------------------------------------------
+
+add_executable(test1 test1.cu)
 
 #target_link_libraries(cudf rmm "${ARROW_LIB}" ${ZLIB_LIBRARIES} NVStrings)
 target_link_libraries(test1 rmm)
