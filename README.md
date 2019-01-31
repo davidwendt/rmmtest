@@ -8,7 +8,7 @@ In your repo create a `thirdparty` dir to hold submodules.
 Execute following commands:
 ```
 cd thirdparty
-git submodule add git@github.com:rapidsai/rmm.git
+git submodule add -b branch-0.5 git@github.com:rapidsai/rmm.git
 git submodule sync
 git submodule update --init --recursive --remote rmm
 ```
