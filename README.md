@@ -14,7 +14,8 @@ git submodule update --init --recursive --remote rmm
 ```
 This ensures you get rmm's submodules as well.
 
-Create CMakeLists.txt with the following key elements.
+The rmm requires you build it from source you need to add it to your CMakeLists.txt.
+The following are the key elements.
 ```
 add_subdirectory(thirdparty/rmm "${CMAKE_BINARY_DIR}/rmm")
 include_directories("${CMAKE_SOURCE_DIR}/thirdparty/rmm/include")
