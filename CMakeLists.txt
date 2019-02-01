@@ -69,7 +69,7 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call -Wn
 
 # set warnings as errors
 # TODO: remove `no-maybe-unitialized` used to suppress warnings in rmm::exec_policy
-set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call -Xcompiler -Wall,-Werror")
+#set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror cross-execution-space-call -Xcompiler -Wall,-Werror")
 
 # Debug options
 if(CMAKE_BUILD_TYPE MATCHES Debug)
@@ -199,9 +199,11 @@ link_directories("${CMAKE_CUDA_IMPLICIT_LINK_DIRECTORIES}" )
 # - link libraries --------------------------------------------------------------------------------
 
 add_executable(test1 test1.cu)
+add_executable(explode explode.cu)
 
 #target_link_libraries(cudf rmm "${ARROW_LIB}" ${ZLIB_LIBRARIES} NVStrings)
 target_link_libraries(test1 rmm)
+target_link_libraries(explode rmm)
 
 ###################################################################################################
 # - python cffi bindings --------------------------------------------------------------------------

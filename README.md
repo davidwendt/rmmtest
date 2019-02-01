@@ -8,7 +8,7 @@ In your repo create a `thirdparty` dir to hold submodules.
 Execute following commands:
 ```
 cd thirdparty
-git submodule add -b branch-0.5 git@github.com:rapidsai/rmm.git
+git submodule add -b branch-0.6 git@github.com:rapidsai/rmm.git
 git submodule sync
 git submodule update --init --recursive --remote rmm
 ```
@@ -22,9 +22,14 @@ include_directories("${CMAKE_SOURCE_DIR}/thirdparty/rmm/include")
 
 target_link_libraries(xxxx rmm)
 ```
+
+You may also need to disable building the rmm test scripts by adding the following to your CMakeLists.txt
+```
+option(BUILD_TESTS "Configure CMake to build tests" OFF)
+```
 See the CMakeLists.txt here for latest details.
 
-Example usage:
+Example usage of rmm from C/C++:
 ```
 #include <rmm/rmm.h>
 
@@ -48,11 +53,11 @@ int test1()
 }
 
 ```
-Default uses cudaMalloc. Example initialization of memory pool:
+Default uses `cudaMalloc`. Example initialization of memory pool:
 ```
    rmmOptions_t options;
    options.allocation_mode = PoolAllocation;
-   options.initial_pool_size = 0;
+   options.initial_pool_size = 0; // (bytes) 0 = allocates half your GPU memory
    options.enable_logging = false;
    rmmInitialize(&options);
 ```
