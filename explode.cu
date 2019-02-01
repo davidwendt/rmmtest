@@ -124,7 +124,7 @@ int main( int argc, char** argv )
         RMM_ALLOC(&buffer1,size1,0);
         RMM_ALLOC(&buffer2,size2,0);
         printf("(%p,%11ld)\n",buffer1,size1);
-        printf("(%p,%11ld)\n",buffer1,size2);
+        printf("(%p,%11ld)\n",buffer2,size2);
         RMM_FREE(buffer2,0);
         RMM_FREE(buffer1,0);
     }
